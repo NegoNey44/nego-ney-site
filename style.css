@@ -1,0 +1,140 @@
+/* style.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(90deg, #4b0082, #800080);
+  color: #fff;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px #9400d3;
+}
+
+.construction {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.blink {
+  font-size: 2.5rem;
+  color: #fff;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.tools {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tools img {
+  width: 60px;
+  height: 60px;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.services {
+  text-align: center;
+  padding: 2rem;
+}
+
+.services ul {
+  list-style: none;
+  padding: 0;
+}
+
+.services li {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.problema {
+  background-color: #111;
+  padding: 2rem;
+  text-align: center;
+}
+
+.problema input {
+  padding: 0.7rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+}
+
+.problema button {
+  padding: 0.7rem 1.5rem;
+  background-color: #800080;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.problema button:hover {
+  background-color: #a020f0;
+}
+
+.social {
+  text-align: center;
+  padding: 2rem;
+}
+
+.instagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.instagram img {
+  width: 30px;
+  height: 30px;
+}
+
+.contato {
+  text-align: center;
+  padding: 2rem;
+}
+
+.whatsapp {
+  padding: 1rem 2rem;
+  background-color: #800080;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.whatsapp:hover {
+  background-color: #a020f0;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #111;
+  color: #aaa;
+  font-size: 0.9rem;
+}
