@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clientes - Nego Ney Informática</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #eee;
+    padding: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1 {
+    color: #a24cff;
+    text-align: center;
+    text-shadow: 0 0 8px #a24cff;
+  }
+  .relato {
+    background: #1a001a;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px #7e00ff88;
+  }
+  .relato p {
+    margin: 6px 0;
+  }
+  .relato .nome {
+    font-weight: 700;
+    color: #d1b8ff;
+  }
+  .relato .data {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  .btn {
+    background-color: #7e00ff;
+    border: none;
+    padding: 8px 14px;
+    margin-right: 8px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 12px #a24cff;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+  .btn:hover {
+    background-color: #a24cff;
+    box-shadow: 0 0 18px #d1b8ff;
+  }
+  .aviso {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #777;
+  }
+</style>
+</head>
+<body>
+  <h1>Relatos de Clientes</h1>
+  <div id="lista-relatos"></div>
+  <p class="aviso">Use os botões para copiar o número ou abrir o WhatsApp do cliente.</p>
+
+<script>
+  // Verifica se tem o link secreto na URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('secret') !== 'vipaccess') {
+    document.body.innerHTML = '<h2 style="color:#a24cff; text-align:center; margin-top:50px;">Acesso negado!</h2>';
+    throw new Error('Acesso negado');
+  }
+
+  const listaDiv = document.getElementById('lista-relatos');
+  const clientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+  if (clientes.length === 0) {
+    listaDiv.innerHTML = '<p style="text-align:center; color:#555;">Nenhum relato registrado ainda.</p>';
+  } else {
+    clientes.forEach((cliente, idx) => {
+      const div = document.createElement('div');
+      div.classList.add('relato');
+      div.innerHTML = `
+        <p class="nome">Nome: ${cliente.nome}</p>
+        <p>Número: <span class="numero" style="user-select:text;">${cliente.numero}</span></p>
+        <p>Problema: ${cliente.problema}</p>
+        <p class="data">Enviado em: ${cliente.data}</p>
+        <button class="btn btn-copiar" data-numero="${cliente.numero}">Copiar Número</button>
+        <button class="btn btn-whatsapp" data-numero="${cliente.numero}">Abrir WhatsApp</button>
+      `;
+      listaDiv.appendChild(div);
+    });
+  }
+
+  // Copiar número ao clicar no botão
+  listaDiv.addEventListener('click', e => {
+    if (e.target.classList.contains('btn-copiar')) {
+      const numero = e.target.getAttribute('data-numero');
+      navigator.clipboard.writeText(numero).then(() => {
+        alert('Número copiado: ' + numero);
+      }).catch(() => {
+        alert('Não foi possível copiar o número.');
+      });
+    }
+    if (e.target.classList.contains('btn-whatsapp')) {
+      let numero = e.target.getAttribute('data-numero');
+      // Limpa o número, deixando só dígitos para o link do WhatsApp
+      numero = numero.replace(/\D/g, '');
+      if (!numero.startsWith('55')) numero = '55' + numero; // acrescenta código BR se faltar
+      window.open(`https://wa.me/${numero}`, '_blank');
+    }
+  });
+</script>
+</body>
+</html>
