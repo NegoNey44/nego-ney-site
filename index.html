@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nego Ney Informática</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  body {
+    margin: 0; background-color: #000; color: #eee;
+    font-family: 'Poppins', sans-serif;
+    display: flex; flex-direction: column; min-height: 100vh;
+  }
+  header {
+    background: #2c005c;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 8px #a24cff;
+  }
+  main {
+    flex: 1;
+    padding: 1rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1, h2 {
+    color: #a24cff;
+    text-shadow: 0 0 10px #7e00ff;
+  }
+  .servicos {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .servico {
+    background: #1a001a;
+    border-radius: 12px;
+    padding: 15px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 0 10px #7e00ff88;
+    cursor: default;
+    color: #d1b8ff;
+  }
+  button#btnProblema {
+    background-color: #7e00ff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px #a24cff;
+    margin: 15px auto;
+    display: block;
+  }
+  button#btnProblema:hover {
+    background-color: #a24cff;
+    box-shadow: 0 0 25px #d1b8ff;
+  }
+  #formProblema {
+    display: none;
+    background: #1a001a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #7e00ffaa;
+    max-width: 600px;
+    margin: 20px auto 40px;
+  }
+  #formProblema label {
+    display: block;
+    margin-bottom: 6px;
+    color: #d1b8ff;
+    font-weight: 600;
+  }
+  #formProblema input, #formProblema textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+  #formProblema textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  #formProblema button[type="submit"] {
+    background-color: #7e00ff;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 12px #a24cff;
+    transition: background-color 0.3s ease;
+  }
+  #formProblema button[type="submit"]:hover {
+    background-color: #a24cff;
+  }
+  footer {
+    background: #2c005c;
+    padding: 1rem;
+    text-align: center;
+    color: #ccc;
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 12px #7e00ff88 inset;
+  }
+  .contato {
+    text-align: center;
+    margin: 40px 0 10px;
+  }
+  .contato a {
+    background-color: #7e00ff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 12px #a24cff;
+    transition: background-color 0.3s ease;
+  }
+  .contato a:hover {
+    background-color: #a24cff;
+  }
+  .animacao-piscar {
+    animation: piscar 1.5s infinite;
+  }
+  @keyframes piscar {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.5; }
+  }
+  .rede-social {
+    margin-top: 30px;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+<header>
+  Nego Ney Informática
+</header>
+<main>
+  <h1>Seu PC nas mãos de quem entende de verdade!</h1>
+  <section class="servicos" aria-label="Serviços">
+    <div class="servico">Montagem de PC</div>
+    <div class="servico">Manutenção</div>
+    <div class="servico">Upgrade de Hardware</div>
+    <div class="servico">Formatação e Instalação</div>
+  </section>
+  
+  <button id="btnProblema">MEU PROBLEMA</button>
+  
+  <form id="formProblema" aria-label="Formulário para relatar problema">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+    
+    <label for="numero">Número de WhatsApp:</label>
+    <input type="tel" id="numero" name="numero" placeholder="(47) 9 9999-9999" pattern="\(?\d{2}\)?\s?\d{4,5}-?\d{4}" required />
+    
+    <label for="problema">Descreva seu problema:</label>
+    <textarea id="problema" name="problema" placeholder="Conte seu problema" required></textarea>
+    
+    <button type="submit">Enviar</button>
+  </form>
+
+  <div class="contato">
+    <a href="https://wa.me/5547988674463" target="_blank" rel="noopener noreferrer">
+      Contato via WhatsApp (47) 9 8867-4463
+    </a>
+  </div>
+
+  <p class="rede-social">(conta pessoal por enquanto) Instagram: <a href="https://instagram.com/v1tnzz" target="_blank" rel="noopener noreferrer" style="color:#a24cff; text-decoration:none;">@v1tnzz</a></p>
+
+  <p style="text-align:center; margin-top: 50px; color: #a24cff;" class="animacao-piscar">
+    SITE EM CONSTRUÇÃO... 🛠️🔧🪚
+  </p>
+</main>
+<footer>
+  ⏰ Horário de atendimento:<br />
+  Seg a Sex: 13:30 às 20:00<br />
+  Sáb e Dom: 15:30 às 19:30
+</footer>
+
+<script>
+  const btnProblema = document.getElementById('btnProblema');
+  const formProblema = document.getElementById('formProblema');
+
+  btnProblema.addEventListener('click', () => {
+    if (formProblema.style.display === 'block') {
+      formProblema.style.display = 'none';
+    } else {
+      formProblema.style.display = 'block';
+      formProblema.scrollIntoView({behavior: 'smooth'});
+    }
+  });
+
+  formProblema.addEventListener('submit', e => {
+    e.preventDefault();
+    const nome = formProblema.nome.value.trim();
+    const numero = formProblema.numero.value.trim();
+    const problema = formProblema.problema.value.trim();
+    if (!nome || !numero || !problema) {
+      alert('Preencha todos os campos.');
+      return;
+    }
+
+    const data = new Date().toLocaleString('pt-BR');
+
+    // Busca os clientes no localStorage
+    let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
+
+    // Adiciona novo cliente
+    clientes.push({ nome, numero, problema, data });
+
+    // Salva de volta
+    localStorage.setItem('clientes', JSON.stringify(clientes));
+
+    alert('Problema enviado com sucesso!');
+
+    // Limpa o formulário e esconde
+    formProblema.reset();
+    formProblema.style.display = 'none';
+  });
+</script>
+</body>
+</html>
